@@ -35,7 +35,7 @@ public class SearchEngineerApplication implements CommandLineRunner {
 		List<Person> result1 = this.personService.findAll();
 		result1.stream().forEach(System.out::println);
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 1; i++) {
 			Person pp = new Person();
 			pp.setName("Arianna");
 			pp.setAge(i);
@@ -79,6 +79,10 @@ public class SearchEngineerApplication implements CommandLineRunner {
 		p.setCars(carList);
 
 		Person pp = personService.save(p);
+
+		List<Person> notLikeQuery = this.personService.smartSearch("name!=*nina");
+		List<Person> likeQuery = this.personService.smartSearch("name==*nina");
+		//List<Person> likeAndJoinQuery = this.personService.smartSearch("name==*nina; cars.brand==VW");
 		System.out.println();
 
 
