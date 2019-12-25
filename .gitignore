@@ -29,3 +29,5 @@ mvnw
 HELP.md
 
 .idea/
+
+*.kotlin_module
