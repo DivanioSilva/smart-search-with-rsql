@@ -8,5 +8,9 @@ public interface PersonService {
 
     Person save(Person person);
 
-    List<Person> findPersonsByName(String name);
+    List<Person> smartSearch(String criteria);
+
+    List<Person> findByName(String name);
+
+    List<Person> findAll();
 }

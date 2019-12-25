@@ -10,18 +10,22 @@ public class CustomRsqlVisitor<T> implements RSQLVisitor<Specification<T>, Void>
 
     private GenericRsqlSpecBuilder<T> builder;
 
+    public CustomRsqlVisitor() {
+        this.builder = new GenericRsqlSpecBuilder<>();
+    }
+
     @Override
     public Specification<T> visit(AndNode andNode, Void aVoid) {
-        return this.builder.createSpecification(andNode);
+        return builder.createSpecification(andNode);
     }
 
     @Override
     public Specification<T> visit(OrNode orNode, Void aVoid) {
-        return this.builder.createSpecification(orNode);
+        return builder.createSpecification(orNode);
     }
 
     @Override
     public Specification<T> visit(ComparisonNode comparisonNode, Void aVoid) {
-        return this.builder.createSpecification(comparisonNode);
+        return builder.createSpecification(comparisonNode);
     }
 }

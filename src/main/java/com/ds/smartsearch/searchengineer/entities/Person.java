@@ -8,10 +8,18 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @EqualsAndHashCode
 @Entity
 public class Person extends AbstractBaseEntity{
     private String name;
     private Integer age;
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id='" + super.getId() + '\'' +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                "} ";
+    }
 }
