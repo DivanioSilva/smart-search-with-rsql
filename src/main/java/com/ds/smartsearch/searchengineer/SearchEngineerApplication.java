@@ -54,12 +54,33 @@ public class SearchEngineerApplication implements CommandLineRunner {
 		car.setFuelType("Gasolina");
 		car.setNumberOfDoors(5);
 		car.setPlate("34-DF-84");
+		car.setBuildYear(2000);
+		car.setPlateYear(2001);
+		this.carService.save(car);
+
+		car = new Car();
+		car.setBrand("VW");
+		car.setFuelType("Gasóleo");
+		car.setNumberOfDoors(3);
+		car.setPlate("34-DF-00");
+		car.setBuildYear(2010);
+		car.setPlateYear(2011);
 
 		this.carService.save(car);
 
 		List<Car> carList = this.carService.smartSearch("brand==VW");
 
+		List<Car> carList2 = this.carService.smartSearch("brand==VW; plateYear>=2000");
+
+		List<Car> carList3 = this.carService.smartSearch("brand==VW; buildYear==2000; plateYear==2001");
+
 		carList.stream().forEach(System.out::println);
+
+		p.setCars(carList);
+
+		Person pp = personService.save(p);
+		System.out.println();
+
 
 	}
 }

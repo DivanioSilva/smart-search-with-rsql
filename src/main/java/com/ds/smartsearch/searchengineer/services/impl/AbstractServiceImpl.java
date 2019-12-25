@@ -1,7 +1,6 @@
 package com.ds.smartsearch.searchengineer.services.impl;
 
 import com.ds.smartsearch.searchengineer.config.rsql.CustomRsqlVisitor;
-import com.ds.smartsearch.searchengineer.entities.Person;
 import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
 import org.springframework.data.jpa.domain.Specification;
