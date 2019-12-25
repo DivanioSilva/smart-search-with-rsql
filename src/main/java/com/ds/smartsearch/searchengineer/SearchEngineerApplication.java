@@ -1,23 +1,24 @@
 package com.ds.smartsearch.searchengineer;
 
+import com.ds.smartsearch.searchengineer.entities.Car;
 import com.ds.smartsearch.searchengineer.entities.Person;
+import com.ds.smartsearch.searchengineer.services.CarService;
 import com.ds.smartsearch.searchengineer.services.PersonService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @SpringBootApplication
 public class SearchEngineerApplication implements CommandLineRunner {
 
-	//private Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	private final PersonService personService;
+	private final CarService carService;
 
-	public SearchEngineerApplication(PersonService personService) {
+	public SearchEngineerApplication(PersonService personService, CarService carService) {
 		this.personService = personService;
+		this.carService = carService;
 	}
 
 	public static void main(String[] args) {
@@ -46,8 +47,19 @@ public class SearchEngineerApplication implements CommandLineRunner {
 
 		List<Person> result2 = this.personService.smartSearch("name==Arianna");
 
-
-
 		result2.stream().forEach(System.out::println);
+
+		Car car = new Car();
+		car.setBrand("VW");
+		car.setFuelType("Gasolina");
+		car.setNumberOfDoors(5);
+		car.setPlate("34-DF-84");
+
+		this.carService.save(car);
+
+		List<Car> carList = this.carService.smartSearch("brand==VW");
+
+		carList.stream().forEach(System.out::println);
+
 	}
 }

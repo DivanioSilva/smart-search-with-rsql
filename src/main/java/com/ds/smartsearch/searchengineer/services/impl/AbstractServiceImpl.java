@@ -1,4 +1,4 @@
-package com.ds.smartsearch.searchengineer.services;
+package com.ds.smartsearch.searchengineer.services.impl;
 
 import com.ds.smartsearch.searchengineer.config.rsql.CustomRsqlVisitor;
 import com.ds.smartsearch.searchengineer.entities.Person;
@@ -9,11 +9,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
 
-public class AbstractService<T, R extends JpaSpecificationExecutor> {
+public class AbstractServiceImpl<T, R extends JpaSpecificationExecutor> {
 
     private final R repository;
 
-    public AbstractService(R repository) {
+    public AbstractServiceImpl(R repository) {
         this.repository = repository;
     }
 
