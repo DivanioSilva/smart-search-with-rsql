@@ -31,3 +31,12 @@ HELP.md
 .idea/
 
 *.kotlin_module
+.target/
+
+target/maven-archiver/
+
+target/maven-status/maven-compiler-plugin/compile/default-compile/
+
+target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/
+
+target/
