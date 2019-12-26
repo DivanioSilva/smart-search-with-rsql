@@ -2,19 +2,33 @@ package com.ds.smartsearch.searchengineer;
 
 import com.ds.smartsearch.searchengineer.entities.Car;
 import com.ds.smartsearch.searchengineer.entities.Person;
+import com.ds.smartsearch.searchengineer.repositories.CityRepository;
 import com.ds.smartsearch.searchengineer.services.CarService;
 import com.ds.smartsearch.searchengineer.services.PersonService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @SpringBootApplication
 public class SearchEngineerApplication implements CommandLineRunner {
 
+	private static final Logger logger = LoggerFactory.getLogger(SearchEngineerApplication.class);
+
 	private final PersonService personService;
 	private final CarService carService;
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Autowired
+	private CityRepository cityRepository;
 
 	public SearchEngineerApplication(PersonService personService, CarService carService) {
 		this.personService = personService;
@@ -84,6 +98,10 @@ public class SearchEngineerApplication implements CommandLineRunner {
 		List<Person> likeQuery = this.personService.smartSearch("name==*nina");
 		//List<Person> likeAndJoinQuery = this.personService.smartSearch("name==*nina; cars.brand==VW");
 		System.out.println();
+
+
+
+		//////
 
 
 	}
