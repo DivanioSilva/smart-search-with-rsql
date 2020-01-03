@@ -158,7 +158,7 @@ public class SearchEngineerApplication implements CommandLineRunner {
 		Iterable<Person> persons = personQueryDSLRepository.findAll(personPredicate);
 		logger.info("{}", persons);
 
-		Iterable<Car> carsIt = carQueryDSLService.findCarSmartSearch("VW", "", "", null, null, 2001);
+		Iterable<Car> carsIt = carQueryDSLService.findCarSmartSearch("VW", "Gasolina", "", null, null, 2001);
 
 		logger.info("{}", carsIt);
 
