@@ -1,16 +1,16 @@
 package com.ds.smartsearch.searchengineer.services.impl;
 
 import com.ds.smartsearch.searchengineer.entities.Car;
-import com.ds.smartsearch.searchengineer.repositories.CarRepository;
+import com.ds.smartsearch.searchengineer.repositories.rsql.CarRSQLRepository;
 import com.ds.smartsearch.searchengineer.services.CarService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CarServiceImpl extends AbstractServiceImpl implements CarService {
 
-    private final CarRepository repository;
+    private final CarRSQLRepository repository;
 
-    public CarServiceImpl(CarRepository repository) {
+    public CarServiceImpl(CarRSQLRepository repository) {
         super(repository);
         this.repository = repository;
     }

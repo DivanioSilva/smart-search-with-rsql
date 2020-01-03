@@ -1,7 +1,7 @@
 package com.ds.smartsearch.searchengineer.services.impl;
 
 import com.ds.smartsearch.searchengineer.entities.Person;
-import com.ds.smartsearch.searchengineer.repositories.PersonRepository;
+import com.ds.smartsearch.searchengineer.repositories.rsql.PersonRSQLRepository;
 import com.ds.smartsearch.searchengineer.services.PersonService;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 @Service
 public class PersonServiceImplImpl extends AbstractServiceImpl implements PersonService {
-    private final PersonRepository personRepository;
+    private final PersonRSQLRepository personRepository;
 
-    public PersonServiceImplImpl(PersonRepository personRepository) {
+    public PersonServiceImplImpl(PersonRSQLRepository personRepository) {
         super(personRepository);
         this.personRepository = personRepository;
     }

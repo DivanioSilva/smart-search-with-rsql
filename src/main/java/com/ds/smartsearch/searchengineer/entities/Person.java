@@ -2,10 +2,7 @@ package com.ds.smartsearch.searchengineer.entities;
 
 import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
@@ -14,10 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
+@Table(name = "persons")
 public class Person extends AbstractBaseEntity{
     private String name;
     private Integer age;
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Car> cars;
 
     @Override
