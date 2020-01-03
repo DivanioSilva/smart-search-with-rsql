@@ -4,8 +4,10 @@ import com.ds.smartsearch.searchengineer.entities.*;
 import com.ds.smartsearch.searchengineer.repositories.querydsl.CarQueryDSLRepository;
 import com.ds.smartsearch.searchengineer.repositories.querydsl.CityQueryDSLRepository;
 import com.ds.smartsearch.searchengineer.repositories.querydsl.PersonQueryDSLRepository;
+import com.ds.smartsearch.searchengineer.services.CarQueryDSLService;
 import com.ds.smartsearch.searchengineer.services.CarService;
 import com.ds.smartsearch.searchengineer.services.PersonService;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -26,16 +28,20 @@ public class SearchEngineerApplication implements CommandLineRunner {
 	private final CarQueryDSLRepository carQueryDSLRepository;
 	private final PersonQueryDSLRepository personQueryDSLRepository;
 
+	private final CarQueryDSLService carQueryDSLService;
+
 	public SearchEngineerApplication(PersonService personService,
 									 CarService carService,
 									 CityQueryDSLRepository cityQueryDSLRepository,
 									 CarQueryDSLRepository carQueryDSLRepository,
-									 PersonQueryDSLRepository personQueryDSLRepository) {
+									 PersonQueryDSLRepository personQueryDSLRepository,
+									 CarQueryDSLService carQueryDSLService) {
 		this.personService = personService;
 		this.carService = carService;
 		this.cityQueryDSLRepository = cityQueryDSLRepository;
 		this.carQueryDSLRepository = carQueryDSLRepository;
 		this.personQueryDSLRepository = personQueryDSLRepository;
+		this.carQueryDSLService = carQueryDSLService;
 	}
 
 	public static void main(String[] args) {
@@ -151,6 +157,10 @@ public class SearchEngineerApplication implements CommandLineRunner {
 		Predicate personPredicate = qPerson.name.eq("Marianna").and(qPerson.cars.isNotEmpty());
 		Iterable<Person> persons = personQueryDSLRepository.findAll(personPredicate);
 		logger.info("{}", persons);
+
+		Iterable<Car> carsIt = carQueryDSLService.findCarSmartSearch("VW", "", "", null, null, 2001);
+
+		logger.info("{}", carsIt);
 
 		/**
 		QueryBase query2 = new JPAQuery(entityManager);
